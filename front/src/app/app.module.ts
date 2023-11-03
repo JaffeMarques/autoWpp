@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutowppButtonComponent } from './atoms/autowpp-button/autowpp-button.component';
+import { AutowppLabelComponent } from './atoms/autowpp-label/autowpp-label.component';
+import { AutowppInputComponent } from './atoms/autowpp-input/autowpp-input.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AutowppLabelComponent, AutowppInputComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

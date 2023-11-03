@@ -3,7 +3,7 @@
   text-transform: uppercase;
   background-color: var(--primary-color);
   border: none;
-  color: white;
+  color: var(--color-1);
   cursor: pointer;
 }
 
@@ -42,7 +42,6 @@
 }
 
 .default-outline:hover {
-  color: white;
+  color: var(--color-1);
   background-color: var(--primary-color);
-  opacity: .9;
 }
