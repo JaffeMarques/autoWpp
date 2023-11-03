@@ -1,9 +1,8 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateConnectionDto {
   @IsNotEmpty()
   name: string;
 
-  @IsNumber()
-  userId: number;
+  userId?: number;
 }

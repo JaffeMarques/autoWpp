@@ -3,9 +3,10 @@ import { ConnectionService } from './connection.service';
 import { ConnectionController } from './connection.controller';
 import { connectionProviders } from './providers/connection.provider';
 import { DatabaseModule } from 'src/providers/database/database.module';
+import { UsersModule } from 'src/users/users.module';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, UsersModule],
   controllers: [ConnectionController],
   providers: [...connectionProviders, ConnectionService],
   exports: [ConnectionService],
