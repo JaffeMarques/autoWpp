@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&family=Material+Symbols+Outlined');
 
+//Reset style
 * {
   font-family: 'Roboto', sans-serif;
   padding: 0;
@@ -13,7 +14,6 @@ h4,
 p {
   margin: 0px;
   padding: 0px;
-  line-height: 1.125;
 }
 
 ul,
@@ -33,15 +33,55 @@ img {
   display: block;
 }
 
-.container {
-  padding: 0 4.5rem;
-  max-width: 1200px;
-  margin: 0px auto;
+//Padrão de cores
+:root {
+  --color-1: #fff;
+  --color-2: #fafafa;
+  --color-3: #eee;
+  --color-4: #d9d9d9;
+  --color-5: #FFE1E1;
+  --color-6: #E7FFE5;
+  --primary-color:#FE5000;
+  --secondary-color:#58595B;
+  --warn-color:#FFAB00;
+  --danger-color:#E73939;
+  --success-color:#64C75B;
 }
 
-@media (max-width: 800px) {
+//Padrão de fonte
+.font-s {
+  font: 400 1rem/1.5 "Roboto", sans-serif;
+  color: var(--secondary-color);
+}
+
+.font-s-bold {
+  font: 700 1rem/1.5 "Roboto", sans-serif;
+  color: var(--secondary-color);
+}
+
+.font-m-bold {
+  font: 700 2rem/1.25 "Roboto", sans-serif;
+  color: var(--secondary-color);
+}
+
+.font-l-bold {
+  font: 700 2.5rem/1.25 "Roboto", sans-serif;
+  color: var(--secondary-color);
+}
+
+@media (max-width: 1200px) {
+  .font-m-bold{
+    font-size: 1.5rem;
+  }
+  .font-l-bold{
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 600px) {
+  .font-s,
+  .font-s-bold{
+    font-size: 0.875rem;
+  }
 }
 

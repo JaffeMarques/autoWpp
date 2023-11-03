@@ -15,14 +15,14 @@ export class AutowppButtonComponent {
   label: string = '';
 
   @Input()
-  size: 'default' | 'small' | 'full-width' = 'default';
+  variant: 'default' | 'default-outline' | 'full-width' | 'small'  = 'default';
 
   constructor(){}
 
   get class() {
     const result = [];
     result.push(`autowpp-button`);
-    result.push(`${this.size}`);
+    result.push(`${this.variant}`);
     return result;
   }
 }
