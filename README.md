@@ -1,0 +1,2 @@
+# autoWpp
+Automate message sending
