@@ -33,6 +33,20 @@ img {
   display: block;
 }
 
+button{
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 //Padrão de cores
 :root {
   --color-1: #fff;
@@ -48,25 +62,29 @@ img {
   --success-color:#64C75B;
 }
 
+.color-1{
+  color: var(--color-1);
+}
+
+.color-secondary{
+  color: var(--secondary-color);
+}
+
 //Padrão de fonte
 .font-s {
   font: 400 1rem/1.5 "Roboto", sans-serif;
-  color: var(--secondary-color);
 }
 
 .font-s-bold {
   font: 700 1rem/1.5 "Roboto", sans-serif;
-  color: var(--secondary-color);
 }
 
 .font-m-bold {
   font: 700 2rem/1.25 "Roboto", sans-serif;
-  color: var(--secondary-color);
 }
 
 .font-l-bold {
   font: 700 2.5rem/1.25 "Roboto", sans-serif;
-  color: var(--secondary-color);
 }
 
 @media (max-width: 1200px) {
