@@ -9,14 +9,24 @@ import { AutowppLabelComponent } from './atoms/autowpp-label/autowpp-label.compo
 import { AutowppInputComponent } from './atoms/autowpp-input/autowpp-input.component';
 import { AutowppHeaderComponent } from './organisms/autowpp-header/autowpp-header.component';
 import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.component';
+import { AutowppNavComponent } from './organisms/autowpp-nav/autowpp-nav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [AppComponent, AutowppLabelComponent, AutowppInputComponent, AutowppHeaderComponent, AutowppLoginComponent],
+  declarations: [
+    AppComponent,
+    AutowppLabelComponent,
+    AutowppInputComponent,
+    AutowppHeaderComponent,
+    AutowppLoginComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AutowppButtonComponent,
     BrowserAnimationsModule,
+    AutowppNavComponent,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
