@@ -15,6 +15,9 @@ export class AutowppButtonComponent {
   label: string = '';
 
   @Input()
+  type: string = '';
+
+  @Input()
   variant: 'default' | 'default-outline' | 'full-width' | 'small'  = 'default';
 
   constructor(){}
