@@ -6,6 +6,7 @@
 .autowpp-header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 24px;
   padding-bottom: 24px;
 }
@@ -16,15 +17,32 @@
   gap: 40px;
 }
 
-.header-logout{
-  display: flex;
-  align-items: center;
-  gap:8px;
+.header-content li a{
+  font-weight: 500;
+  color: var(--color-1);
 }
 
-.header-logout:hover{
-  .header-logout-text{
-    text-decoration: underline;
+.header-content li a:hover{
+  color: #ffddb7;
+}
+
+@media (max-width: 900px){
+  .header-logo{
+    width: 110px;
+  }
+
+  .header-content{
+    gap: 30px;
   }
 }
 
+@media (max-width: 600px){
+  .header-content{
+    gap: 20px;
+  }
+
+  .autowpp-header{
+    flex-direction: column;
+    gap: 16px;
+  }
+}
