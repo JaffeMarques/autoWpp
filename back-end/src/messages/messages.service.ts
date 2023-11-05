@@ -57,4 +57,13 @@ export class MessagesService {
       });
     }
   }
+
+  async processMany(user, data: any[], connectionId) {
+    const connection = await this.connectionService.findOne(connectionId);
+    await this.connectionService.getInstance(connection);
+
+    data.map(async (linha) => {
+      await this.sendMessage(user, linha);
+    });
+  }
 }
