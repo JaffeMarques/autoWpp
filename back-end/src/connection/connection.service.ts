@@ -8,10 +8,13 @@ import { CONNECTION_REPOSITORY } from 'src/config/constants';
 import { SessionInterface } from './entities/session.interface';
 import { UsersService } from 'src/users/users.service';
 import { ConnectionStatus } from './enums/connection-status.enum';
+import * as qrcode from 'qrcode-terminal';
 
 @Injectable()
 export class ConnectionService {
   private readonly logger = new Logger(ConnectionService.name);
+  private whatsappInstance: SessionInterface;
+  private status: ConnectionStatus = ConnectionStatus.UNINITIALIZED;
 
   constructor(
     @Inject(CONNECTION_REPOSITORY)
@@ -35,7 +38,7 @@ export class ConnectionService {
     return false;
   }
 
-  findOne(id: number) {
+  findOne(id: number): Promise<Connection> {
     return this.connectionRepository.findOne({
       where: {
         id: id,
@@ -86,18 +89,21 @@ export class ConnectionService {
 
     whatsapp.on('qr', async (qr) => {
       this.logger.log('Session generated: ' + connection.name);
-      connection.qrCode = qr;
-      connection.status = ConnectionStatus.QRCODE_GENERATED;
-      await this.update(connection.id, connection);
+      qrcode.generate(qr, { small: true });
+      if (!connection.qrCode) {
+        this.status = ConnectionStatus.QRCODE_GENERATED;
+        connection.qrCode = qr;
+        connection.status = ConnectionStatus.QRCODE_GENERATED;
+        await this.update(connection.id, connection);
+      }
     });
 
     whatsapp.on('ready', async () => {
-      connection.status = ConnectionStatus.READY;
-      await this.update(connection.id, connection);
       this.logger.log(`Session: ${connection.name} READY`);
     });
 
     whatsapp.on('authenticated', async () => {
+      this.status = ConnectionStatus.CONNECTED;
       connection.status = ConnectionStatus.CONNECTED;
       await this.update(connection.id, connection);
       this.logger.log(`Session: ${connection.name} AUTHENTICATED`);
@@ -108,5 +114,26 @@ export class ConnectionService {
       await this.update(connection.id, connection);
       this.logger.error(`Session: ${connection.name} FAILURE! Reason: ${msg}`);
     });
+
+    this.whatsappInstance = whatsapp;
   }
+
+  async getInstance(connection: Connection): Promise<SessionInterface> {
+    if (connection.status == ConnectionStatus.CONNECTED) {
+      if (this.status != ConnectionStatus.CONNECTED) {
+        await this.initConnection(connection);
+      }
+
+      return new Promise(async (resolve) => {
+        let i = 0;
+        while (this.status != ConnectionStatus.CONNECTED || i > 10) {
+          await this.sleep(3000);
+          i++;
+        }
+        resolve(this.whatsappInstance);
+      });
+    }
+  }
+
+  sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 }

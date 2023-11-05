@@ -24,8 +24,8 @@ export class UsersController {
 
   @Patch(':id')
   @UseGuards(AuthGuard)
-  update(@Param('id') id: string, @Body() user: UpdateUserDto) {
-    return this.userService.update(+id, user);
+  update(@Request() req, @Param('id') id: string, @Body() user: UpdateUserDto) {
+    return this.userService.update(+id, user, req.user);
   }
 
   @Get()

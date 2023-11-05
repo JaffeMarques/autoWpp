@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { UserRole } from '../enums/userRole.enum';
+import { UserRole } from '../enums/user-role.enum';
 
 @Entity({ name: 'users' })
 export class User {
