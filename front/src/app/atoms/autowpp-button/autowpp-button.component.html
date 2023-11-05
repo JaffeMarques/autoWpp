@@ -1,3 +1,6 @@
-<button [class]="class">
+<button [class]="class" [type]="type">
+  <span *ngIf="icon" class="material-symbols-outlined">
+    {{ icon }}
+  </span>
   {{ label }}
 </button>
