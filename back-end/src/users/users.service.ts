@@ -24,13 +24,15 @@ export class UsersService {
     }
   }
 
-  async update(id: number, user: UpdateUserDto) {
+  async update(id: number, user: UpdateUserDto, loggedUser: any) {
     const errors = await validate(user);
     if (errors.length > 0) {
       throw new Error('Invalid Data');
     } else {
-      await this.userRepository.update({ id: id }, user);
-      return true;
+      if (await this.isAdmin(loggedUser.username)) {
+        await this.userRepository.update({ id: id }, user);
+        return true;
+      }
     }
   }
 
@@ -43,11 +45,18 @@ export class UsersService {
   }
 
   async findAll(user): Promise<User[]> {
-    const userInstance = await this.findOne(user.username);
-    if (userInstance.role == UserRole.ADMIN) {
+    if (await this.isAdmin(user.username)) {
       return this.userRepository.find();
     } else {
       throw new UnauthorizedException();
     }
+  }
+
+  async isAdmin(userName: string) {
+    const userInstance = await this.findOne(userName);
+    if (userInstance && userInstance.role == UserRole.ADMIN) {
+      return true;
+    }
+    return false;
   }
 }
