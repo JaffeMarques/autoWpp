@@ -1,7 +1,6 @@
 .login-bg{
   background: linear-gradient(180deg, #FE5000 0%, #FF6B00 100%);
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
 }
 
