@@ -10,6 +10,9 @@ import { AutowppInputComponent } from './atoms/autowpp-input/autowpp-input.compo
 import { AutowppHeaderComponent } from './organisms/autowpp-header/autowpp-header.component';
 import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.component';
 import { AutowppDashboardComponent } from './pages/autowpp-dashboard/autowpp-dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { AutowppDashboardComponent } from './pages/autowpp-dashboard/autowpp-das
     AppRoutingModule,
     AutowppButtonComponent,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

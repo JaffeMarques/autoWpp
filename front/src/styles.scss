@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&family=Material+Symbols+Outlined");
 
 //Reset style
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -33,7 +33,7 @@ img {
   display: block;
 }
 
-button{
+button {
   cursor: pointer;
   border: none;
   background: transparent;
@@ -48,12 +48,12 @@ button{
   padding-right: 40px;
 }
 
-.full-height{
-  height: 100%;
+.full-height {
+  min-height: 100vh;
 }
 
 @media (max-width: 600px) {
-  .container{
+  .container {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -65,20 +65,20 @@ button{
   --color-2: #fafafa;
   --color-3: #eee;
   --color-4: #d1d1d1;
-  --color-6: #FFE1E1;
-  --color-7: #E7FFE5;
-  --primary-color:#FE5000;
-  --secondary-color:#58595B;
-  --warn-color:#FFAB00;
-  --danger-color:#E73939;
-  --success-color:#64C75B;
+  --color-6: #ffe1e1;
+  --color-7: #e7ffe5;
+  --primary-color: #fe5000;
+  --secondary-color: #58595b;
+  --warn-color: #ffab00;
+  --danger-color: #e73939;
+  --success-color: #64c75b;
 }
 
-.color-1{
+.color-1 {
   color: var(--color-1);
 }
 
-.color-secondary{
+.color-secondary {
   color: var(--secondary-color);
 }
 
@@ -100,18 +100,17 @@ button{
 }
 
 @media (max-width: 1200px) {
-  .font-m-bold{
+  .font-m-bold {
     font-size: 1.5rem;
   }
-  .font-l-bold{
+  .font-l-bold {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 600px) {
   .font-s,
-  .font-s-bold{
+  .font-s-bold {
     font-size: 0.875rem;
   }
 }
-
