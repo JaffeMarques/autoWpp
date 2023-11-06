@@ -9,6 +9,7 @@ import { AutowppLabelComponent } from './atoms/autowpp-label/autowpp-label.compo
 import { AutowppInputComponent } from './atoms/autowpp-input/autowpp-input.component';
 import { AutowppHeaderComponent } from './organisms/autowpp-header/autowpp-header.component';
 import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.component';
+import { AutowppDashboardComponent } from './pages/autowpp-dashboard/autowpp-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.compo
     AutowppInputComponent,
     AutowppHeaderComponent,
     AutowppLoginComponent,
+    AutowppDashboardComponent,
   ],
   imports: [
     BrowserModule,
