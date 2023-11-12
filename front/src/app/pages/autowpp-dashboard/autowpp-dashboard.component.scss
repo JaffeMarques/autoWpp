@@ -1,0 +1,14 @@
+.full-height {
+  background: #eeeeee;
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  margin-top: 10px;
+  color: var(--secondary-color);
+}

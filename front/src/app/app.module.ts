@@ -13,6 +13,7 @@ import { AutowppDashboardComponent } from './pages/autowpp-dashboard/autowpp-das
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
     AutowppHeaderComponent,
     AutowppLoginComponent,
     AutowppDashboardComponent,
+    AutowppTableComponent,
   ],
   imports: [
     BrowserModule,
