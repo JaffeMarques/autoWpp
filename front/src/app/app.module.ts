@@ -9,6 +9,11 @@ import { AutowppLabelComponent } from './atoms/autowpp-label/autowpp-label.compo
 import { AutowppInputComponent } from './atoms/autowpp-input/autowpp-input.component';
 import { AutowppHeaderComponent } from './organisms/autowpp-header/autowpp-header.component';
 import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.component';
+import { AutowppDashboardComponent } from './pages/autowpp-dashboard/autowpp-dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +22,17 @@ import { AutowppLoginComponent } from './pages/autowpp-login/autowpp-login.compo
     AutowppInputComponent,
     AutowppHeaderComponent,
     AutowppLoginComponent,
+    AutowppDashboardComponent,
+    AutowppTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AutowppButtonComponent,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

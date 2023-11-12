@@ -1,15 +1,17 @@
-.login-bg{
-  background: linear-gradient(180deg, #FE5000 0%, #FF6B00 100%);
-  display: grid;
-  grid-template-columns: 1fr;
+.login-bg {
+  background: linear-gradient(180deg, #fe5000 0%, #ff6b00 100%);
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.login-bg > div{
+.login-bg > div {
   min-width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-.login{
+.login {
   align-self: center;
   align-items: center;
   background: var(--color-1);
@@ -22,48 +24,56 @@
   margin: 0 auto;
 }
 
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.login-form h1{
+.login-form h1 {
   align-self: center;
 }
 
-.login-logo{
-  width: 218px;
+.login-logo {
+  width: 180px;
   height: auto;
   align-self: center;
 }
 
-@media (max-width: 1200px){
-  .login{
+.error {
+  width: 100%;
+  background: #c00909;
+  color: white;
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+  .login {
     padding: 30px;
     gap: 30px;
   }
 
-  .login-logo{
+  .login-logo {
     width: 168px;
   }
 }
 
-@media (max-width: 900px){
-  .login{
+@media (max-width: 900px) {
+  .login {
     grid-template-columns: 1fr;
     gap: 0;
     padding: 20px;
   }
 
-  .login-img{
+  .login-img {
     display: none;
   }
 }
 
-@media (max-width: 600px){
-  .login{
+@media (max-width: 600px) {
+  .login {
     border-radius: 10px;
   }
-
 }

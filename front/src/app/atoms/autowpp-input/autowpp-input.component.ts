@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-autowpp-input',
   templateUrl: './autowpp-input.component.html',
-  styleUrls: ['./autowpp-input.component.scss']
+  styleUrls: ['./autowpp-input.component.scss'],
 })
 export class AutowppInputComponent {
   @Input()
@@ -20,4 +20,9 @@ export class AutowppInputComponent {
 
   @Input()
   placeholder: string = '';
+
+  /**
+   * Invoked when the model has been changed
+   */
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 }

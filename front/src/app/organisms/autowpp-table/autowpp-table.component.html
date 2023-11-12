@@ -1,0 +1,11 @@
+<table class="autowpp-table">
+  <tr>
+    <th *ngFor="let head of header">{{ head }}</th>
+  </tr>
+  <tr *ngFor="let line of lines">
+    <td>{{ line.name }}</td>
+    <td>{{ line.status }}</td>
+    <td>{{ line.session }}</td>
+    <td>{{ line.lastUpdate }}</td>
+  </tr>
+</table>
