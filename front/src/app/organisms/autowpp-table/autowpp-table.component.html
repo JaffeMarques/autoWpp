@@ -3,9 +3,25 @@
     <th *ngFor="let head of header">{{ head }}</th>
   </tr>
   <tr *ngFor="let line of lines">
-    <td>{{ line.name }}</td>
-    <td>{{ line.status }}</td>
-    <td>{{ line.session }}</td>
-    <td>{{ line.lastUpdate }}</td>
+    <td *ngFor="let coluna of line">
+      <app-autowpp-button
+        *ngIf="coluna.type == 'button'"
+        [label]="coluna.label"
+        [variant]="coluna.variant"
+        [icon]="coluna.icon"
+        [disabled]="coluna.disabled"
+        (click)="coluna.onclick()"
+      ></app-autowpp-button>
+
+      <div class="text" *ngIf="coluna.type == 'text'">
+        <span
+          *ngIf="coluna.icon"
+          class="material-symbols-outlined {{ coluna.iconColor }}"
+        >
+          {{ coluna.icon }}
+        </span>
+        {{ coluna.label }}
+      </div>
+    </td>
   </tr>
 </table>

@@ -22,12 +22,16 @@ export class AutowppButtonComponent {
   icon: string = '';
 
   @Input()
+  disabled: string = '';
+
+  @Input()
   variant:
     | 'default'
     | 'default-outline'
     | 'full-width'
     | 'small'
-    | 'small-outline' = 'default';
+    | 'small-outline'
+    | 'outline' = 'default';
 
   constructor() {}
 
@@ -37,6 +41,9 @@ export class AutowppButtonComponent {
     result.push(`${this.variant}`);
     if (this.icon) {
       result.push('icon-button');
+    }
+    if (this.disabled) {
+      result.push('disabled');
     }
     return result;
   }

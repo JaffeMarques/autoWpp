@@ -7,7 +7,7 @@ import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class ConnectionService {
   apiUrl: string = environment.apiUrl;
   error: string = '';
 
@@ -16,18 +16,18 @@ export class LoginService {
     private storageService: StorageService
   ) {}
 
-  async login(username: string, password: string) {
-    const url = `${this.apiUrl}auth/login`;
-    const data = {
-      username: username,
-      password: password,
-    };
+  async getConnections() {
+    const url = `${this.apiUrl}connection`;
+    const headers = await this.storageService.getHeaders();
 
-    const response: any = await lastValueFrom(this.http.post(url, data));
+    if (headers) {
+      const response: any = await lastValueFrom(
+        this.http.get(url, { headers: headers })
+      );
 
-    if (response.access_token) {
-      this.storageService.setToken(response.access_token);
-      return true;
+      if (response) {
+        return response;
+      }
     }
 
     return false;
