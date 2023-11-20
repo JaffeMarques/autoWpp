@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,10 @@ export class StorageService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  getHeaders() {
+    const token = this.getToken();
+    return new HttpHeaders().set('Authorization', 'Bearer ' + token);
   }
 }

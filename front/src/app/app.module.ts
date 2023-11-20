@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { QrCodeDialog } from './pages/autowpp-dashboard/dialogs/autowpp-qrcode-dialog.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.c
     AutowppLoginComponent,
     AutowppDashboardComponent,
     AutowppTableComponent,
+    QrCodeDialog,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.c
     FormsModule,
     HttpClientModule,
     RouterModule,
+    MatDialogModule,
+    QRCodeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

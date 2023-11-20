@@ -16,3 +16,21 @@ td {
   background: white;
   border-radius: 10px;
 }
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.green {
+  color: #64c75b;
+}
+
+.yellow {
+  color: #ffab00;
+}
+
+.red {
+  color: #e73939;
+}
