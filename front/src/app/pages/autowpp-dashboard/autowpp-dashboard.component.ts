@@ -18,6 +18,10 @@ export class AutowppDashboardComponent {
   ) {}
 
   async ngOnInit() {
+    this.initConnections();
+  }
+
+  async initConnections() {
     const response = await this.connectionService.getConnections();
     this.connections = response.map((connection: any) => {
       let labelStatus = 'Aguardando';
@@ -82,6 +86,7 @@ export class AutowppDashboardComponent {
   }
 
   async delete(id: string) {
-    console.log(id);
+    await this.connectionService.delete(+id);
+    this.initConnections();
   }
 }

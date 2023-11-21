@@ -32,4 +32,13 @@ export class ConnectionService {
 
     return false;
   }
+
+  async delete(id: number) {
+    const url = `${this.apiUrl}connection/${id}`;
+    const headers = await this.storageService.getHeaders();
+
+    const response = await lastValueFrom(
+      this.http.delete(url, { headers: headers })
+    );
+  }
 }
