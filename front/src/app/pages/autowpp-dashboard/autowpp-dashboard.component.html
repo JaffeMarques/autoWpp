@@ -2,8 +2,11 @@
 <div class="bg-gray full-height">
   <div class="container">
     <header class="card-header">
-      <h1>Conexões</h1>
-      <app-autowpp-button label="Adicionar nova conexão"></app-autowpp-button>
+      <h1 class="m0">Conexões</h1>
+      <app-autowpp-button
+        (click)="openNewConnectionDialog()"
+        label="Adicionar nova conexão"
+      ></app-autowpp-button>
     </header>
     <app-autowpp-table
       [header]="header"

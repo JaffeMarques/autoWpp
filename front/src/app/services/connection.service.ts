@@ -32,4 +32,22 @@ export class ConnectionService {
 
     return false;
   }
+
+  async create(name: string): Promise<boolean> {
+    const url = `${this.apiUrl}connection`;
+    const headers = await this.storageService.getHeaders();
+    const data = {
+      name: name,
+    };
+
+    const response: any = await lastValueFrom(
+      this.http.post(url, data, { headers: headers })
+    );
+
+    if (response) {
+      return true;
+    }
+
+    return false;
+  }
 }

@@ -1,0 +1,30 @@
+<div mat-dialog-content class="new-connection-dialog">
+  <form action="" class="form-int">
+    <h1 class="font-m-bold color-secondary m0">Criar conexão</h1>
+    <div>
+      <app-autowpp-label label="Nome da conexão"></app-autowpp-label>
+      <app-autowpp-input
+        [(value)]="name"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Informe o nome da conexão"
+      ></app-autowpp-input>
+      <div *ngIf="error" class="error">
+        Verifique os dados e tente novamente
+      </div>
+    </div>
+    <div class="btn-actions">
+      <app-autowpp-button
+        label="Criar conexão"
+        variant="default"
+        (click)="createConnection()"
+      ></app-autowpp-button>
+      <app-autowpp-button
+        label="cancelar"
+        variant="default-outline"
+        (click)="onNoClick()"
+      ></app-autowpp-button>
+    </div>
+  </form>
+</div>

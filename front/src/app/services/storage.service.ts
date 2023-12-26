@@ -15,6 +15,15 @@ export class StorageService {
     return localStorage.getItem('token');
   }
 
+  async destroyToken(key: string): Promise<boolean> {
+    try {
+      await localStorage.removeItem(key);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   getHeaders() {
     const token = this.getToken();
     return new HttpHeaders().set('Authorization', 'Bearer ' + token);

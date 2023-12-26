@@ -32,4 +32,8 @@ export class LoginService {
 
     return false;
   }
+
+  async logOut(): Promise<boolean> {
+    return this.storageService.destroyToken('token');
+  }
 }
