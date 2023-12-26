@@ -14,7 +14,7 @@ export class AuthService {
 
   async signIn(username: string, pass: string): Promise<any> {
     const user = await this.userService.findOne(username);
-    if (!user || !user.validatePassword(pass)) {
+    if (!user || !(await user.validatePassword(pass))) {
       throw new UnauthorizedException();
     }
 

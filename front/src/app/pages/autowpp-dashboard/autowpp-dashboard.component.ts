@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConnectionService } from 'src/app/services/connection.service';
-import { QrCodeDialog } from './dialogs/autowpp-qrcode-dialog.component';
+import { QrCodeDialog } from './dialogs/qrcode/autowpp-qrcode-dialog.component';
+import { NewConnectionDialog } from './dialogs/new-connection/autowpp-new-connection-dialog.compoment';
+import { interval, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-autowpp-dashboard',
@@ -11,10 +14,13 @@ import { QrCodeDialog } from './dialogs/autowpp-qrcode-dialog.component';
 export class AutowppDashboardComponent {
   header = ['Nome', 'Status', 'Sessão', 'Última atualização', ''];
   connections: any;
+  private waitingQr = false;
+  private unsubscribe$ = new Subject();
 
   constructor(
     private connectionService: ConnectionService,
-    public dialog: MatDialog
+    public qrCodeDialog: MatDialog,
+    public newConnectionDialog: MatDialog
   ) {}
 
   async ngOnInit() {
@@ -48,6 +54,7 @@ export class AutowppDashboardComponent {
           label: labelStatus,
           icon: iconStatus,
           iconColor: colorStatus,
+          status: connection.status,
         },
         {
           type: 'button',
@@ -55,7 +62,7 @@ export class AutowppDashboardComponent {
           label: 'QR CODE',
           disabled: connection.status == 2 ? false : true,
           onclick: () => {
-            this.openModal(connection);
+            this.openQrCodeDialog(connection);
           },
         },
         {
@@ -74,11 +81,47 @@ export class AutowppDashboardComponent {
     });
   }
 
-  async openModal(connection: any) {
+  async openQrCodeDialog(connection: any) {
     const qrcode = connection.qrCode;
-    this.dialog.open(QrCodeDialog, {
+    this.qrCodeDialog.open(QrCodeDialog, {
       data: { name: connection.name, qrcode: qrcode },
     });
+  }
+
+  async openNewConnectionDialog() {
+    const dialogResponse = this.newConnectionDialog.open(NewConnectionDialog, {
+      height: '32%',
+      width: '40%',
+    });
+
+    dialogResponse.componentInstance.success.subscribe((result) => {
+      if (result) {
+        this.waitingQr = true;
+        this.ngOnInit();
+
+        const interval$ = interval(5000);
+        interval$
+          .pipe(
+            filter(() => this.waitingQr),
+            takeUntil(this.unsubscribe$)
+          )
+          .subscribe(() => {
+            this.ngOnInit();
+            this.awaitingQrCode();
+          });
+      }
+    });
+  }
+
+  async awaitingQrCode(): Promise<void> {
+    this.waitingQr =
+      (await this.connections.filter((con: any) => con[1].status == 0)).length >
+      0;
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next(null);
+    this.unsubscribe$.complete();
   }
 
   async delete(id: string) {

@@ -22,7 +22,6 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
   }
 
   async hash(value: string) {
-    console.log('entrou', value);
     return await bcrypt.hash(value, +process.env.PASS_SALT_ROUNDS);
   }
 }

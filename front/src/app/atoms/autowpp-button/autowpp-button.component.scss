@@ -15,14 +15,14 @@
 
 .default {
   font-size: 1rem;
-  padding: 15px 30px;
+  padding: 13px 21px;
   border-radius: 10px;
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
 }
 
 .default-outline {
   font-size: 1rem;
-  padding: 15px 30px;
+  padding: 11px 21px;
   border-radius: 10px;
   background-color: transparent;
   color: var(--primary-color);
@@ -31,7 +31,7 @@
 
 .full-width {
   font-size: 1rem;
-  padding: 15px 30px;
+  padding: 13px 21px;
   border-radius: 10px;
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
   width: 100%;
