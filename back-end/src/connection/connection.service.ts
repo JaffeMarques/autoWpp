@@ -90,7 +90,7 @@ export class ConnectionService {
     whatsapp.on('qr', async (qr) => {
       this.logger.log('Session generated: ' + connection.name);
       qrcode.generate(qr, { small: true });
-      if (!connection.qrCode) {
+      if (connection && qr) {
         this.status = ConnectionStatus.QRCODE_GENERATED;
         connection.qrCode = qr;
         connection.status = ConnectionStatus.QRCODE_GENERATED;

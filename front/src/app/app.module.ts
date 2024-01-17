@@ -15,8 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AutowppTableComponent } from './organisms/autowpp-table/autowpp-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { QrCodeDialog } from './pages/autowpp-dashboard/dialogs/autowpp-qrcode-dialog.component';
+import { QrCodeDialog } from './pages/autowpp-dashboard/dialogs/qrcode/autowpp-qrcode-dialog.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { NewConnectionDialog } from './pages/autowpp-dashboard/dialogs/new-connection/autowpp-new-connection-dialog.compoment';
+import { InterceptorModule } from './interceptors/interceptor.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     AutowppDashboardComponent,
     AutowppTableComponent,
     QrCodeDialog,
+    NewConnectionDialog,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     RouterModule,
     MatDialogModule,
     QRCodeModule,
+    InterceptorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
